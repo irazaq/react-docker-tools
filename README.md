@@ -18,14 +18,14 @@ https://github.com/facebook/create-react-app/issues/3002 by przbadu and others
 Enter the project folder where you want the app to be created using create-react-app
 ```
 cd project_directory
-docker run -v ${PWD}:/app react-cli create-react-app myapp
+docker run -v ${PWD}:/app -u `id -u`:`id -g` react-cli create-react-app myapp
 ```
 Instead of using the long version of the command, you can create a shortcut or alias to the docker tools. To do this, add
 these to your .bashrc file
 ```
-alias react-docker='docker run -v ${PWD}:/app react-cli'
-alias npm='docker run -v ${PWD}:/app react-cli npm'
-alias yarn='docker run -v ${PWD}:/app react-cli yarn'
+alias react-docker='docker run -v ${PWD}:/app -u `id -u`:`id -g` react-cli'
+alias npm='docker run -v ${PWD}:/app -u `id -u`:`id -g` react-cli npm'
+alias yarn='docker run -v ${PWD}:/app -u `id -u`:`id -g` react-cli yarn'
 ```
 logout and login again OR type `source .bashrc` to load the file and update your shell environment.
 
