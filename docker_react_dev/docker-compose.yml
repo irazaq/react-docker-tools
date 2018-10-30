@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  dev:
+    build:
+      dockerfile: .docker/Dockerfile
+      context: .
+      target: base
+    command: npm start
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+  prod:
+    build:
+      dockerfile: .docker/Dockerfile
+      context: .
+    command: ["nginx", "-g", "daemon off;"]
+    ports:
+      - 8000:80
+    volumes:
+      - .:/app
